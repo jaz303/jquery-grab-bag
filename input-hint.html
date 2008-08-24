@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <title>Input Hint</title>
+    <script type='text/javascript' src='javascripts/jquery-1.2.6.min.js'></script>
+    <script type='text/javascript' src='javascripts/jquery.input-hint.js'></script>
+    <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
+    <style type='text/css'>
+      .hint { color: #808080; }
+    </style>
+    <script type='text/javascript'>
+      $(function() {
+        $('*[@hint]').inputHint();
+      });
+    </script>
+  </head>
+  <body>
+    <div id='container'>
+      
+      <form method='post'>
+        
+        <input type='text' hint='Forename' name='forename' /><br/>
+        <input type='text' hint='Surname' name='surname' /><br/>
+        <input type='submit' value='Submit' />
+        
+      </form>
+      
+    </div>
+  </body>
+</html>

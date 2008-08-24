@@ -1,0 +1,17 @@
+@import url('zero.css');
+@import url('jquery.lightbox-0.4.css');
+
+body, table { font: 12px/1.4 Helvetica, Arial, sans-serif; color: black; }
+
+img { border: 0; }
+
+a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+.first { margin-top: 0 }
+
+.cl { clear: left; }
+.cr { clear: right; }
+.cb { clear: both; }
+
+#container { width: 800px; margin: 0 auto; }
