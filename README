@@ -10,5 +10,5 @@ projects. These are largely unsupported.
 Currently includes:
 
 * Input hints
-* Resizable text area (incomplete)
+* Auto-growing text area
 * CSS-based page text resizing with cookie storage
