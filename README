@@ -12,3 +12,4 @@ Currently includes:
 * Input hints
 * Auto-growing text area
 * CSS-based page text resizing with cookie storage
+* Rollovers with preloading
