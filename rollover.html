@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <title>jQuery Image Rollover</title>
+    <script type='text/javascript' src='javascripts/jquery-1.2.6.min.js'></script>
+    <script type='text/javascript' src='javascripts/jquery.rollover.js'></script>
+    <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
+  </head>
+  <body>
+    <div id='container'>
+      
+      <p>Images from <a href='http://www.externalharddrive.com/graphics/bullets/index.html'>External Hard Drive</a></p>
+      
+      <img src='images/r.gif' />
+      <img src='images/r.gif?foo=bar' />
+      <img src='images/r_h.gif' />
+      
+      <script type='text/javascript'>
+        $(function() {
+          $('img').rollover();
+        });
+      </script>
+      
+    </div>
+  </body>
+</html>
