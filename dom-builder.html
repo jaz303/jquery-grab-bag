@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+    <title></title>
+    <script type='text/javascript' src='javascripts/jquery-1.2.6.min.js'></script>
+    <script type='text/javascript' src='javascripts/jquery.dom-builder.js'></script>
+    <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
+    <style type='text/css'>
+      #foo { background-color: #cdcdcd; }
+      td, th { padding: 0.2em; }
+      th { font-weight: bold; }
+        .col-1 { color: red; }
+        .col-2 { color: green; }
+        .col-3 { color: blue; }
+    </style>
+  </head>
+  <body>
+    <div id='container'>
+      
+      <h1>This is the heading</h1>
+      
+      <script type='text/javascript'>
+        $(function() {
+          $$('table#foo',
+            $$('tr', $$('th.col-1', 'ID'), $$('th.col-2', 'Username'), $$('th.col-3', 'Email')),
+            $$('tr', $$('td', 1), $$('td', 'jaz303'), $$('td', 'jason@magiclamp.co.uk')),
+            {style: "margin:20px auto", mouseover: function() { $(this).css('backgroundColor', '#efefef'); }}
+          ).appendTo('#container');
+        });
+      </script>
+      
+    </div>
+  </body>
+</html>
