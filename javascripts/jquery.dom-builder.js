@@ -29,7 +29,9 @@ function $$(tagName) {
         if (match[4]) $ele[0].className = match[4].replace(/\./g, ' ');
         
         for (var k in options) {
-            if (jQuery.isFunction(options[k])) {
+            if (k == 'hover' && options[k] instanceof Array) {
+                $ele.hover(options[k][0], options[k][1]);
+            } else if (jQuery.isFunction(options[k])) {
                 $ele.bind(k, options[k]);
             } else {
                 $ele.attr(k, options[k])

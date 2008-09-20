@@ -26,7 +26,12 @@
           $$('table#foo',
             $$('tr', $$('th.col-1', 'ID'), $$('th.col-2', 'Username'), $$('th.col-3', 'Email')),
             $$('tr', $$('td', 1), $$('td', 'jaz303'), $$('td', 'jason@magiclamp.co.uk')),
-            {style: "margin:20px auto", mouseover: function() { $(this).css('backgroundColor', '#efefef'); }}
+            { style: "margin:20px auto",
+              hover: [
+                function() { $(this).css('backgroundColor', '#efefef'); },
+                function() { $(this).css('backgroundColor', '#cdcdcd'); }
+              ]
+            }
           ).appendTo('#container');
         });
       </script>
