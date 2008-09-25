@@ -2,29 +2,29 @@
     
     function shuffle(a) {
         var i = a.length, j;
-		while (i) {
-			var j = Math.floor((i--) * Math.random());
-			var t = a[i];
-			a[i] = a[j];
-			a[j] = t;
-		}
+        while (i) {
+            var j = Math.floor((i--) * Math.random());
+            var t = a[i];
+            a[i] = a[j];
+            a[j] = t;
+        }
     }
     
     function randomAlphaNum() {
         var rnd = Math.floor(Math.random() * 62);
-		if (rnd >= 52) return String.fromCharCode(rnd - 4);
-		else if (rnd >= 26) return String.fromCharCode(rnd + 71);
-		else return String.fromCharCode(rnd + 65);
+        if (rnd >= 52) return String.fromCharCode(rnd - 4);
+        else if (rnd >= 26) return String.fromCharCode(rnd + 71);
+        else return String.fromCharCode(rnd + 65);
     }
     
     $.fn.rot13 = function() {
         this.each(function() {
             $(this).text($(this).text().replace(/[a-z0-9]/ig, function(chr) {
                 var cc = chr.charCodeAt(0);
-    			if (cc >= 65 && cc <= 90) cc = 65 + ((cc - 52) % 26);
-    			else if (cc >= 97 && cc <= 122) cc = 97 + ((cc - 84) % 26);
-    			else if (cc >= 48 && cc <= 57) cc = 48 + ((cc - 43) % 10);
-    			return String.fromCharCode(cc);
+                if (cc >= 65 && cc <= 90) cc = 65 + ((cc - 52) % 26);
+                else if (cc >= 97 && cc <= 122) cc = 97 + ((cc - 84) % 26);
+                else if (cc >= 48 && cc <= 57) cc = 48 + ((cc - 43) % 10);
+                return String.fromCharCode(cc);
             }));
         });
         return this;
