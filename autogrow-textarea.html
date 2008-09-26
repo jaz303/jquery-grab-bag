@@ -3,7 +3,7 @@
 
 <html>
   <head>
-    <title>jQuery Auto-Growing Textarea</title>
+    <title>jQuery Grab Bag - Auto-Growing Textarea Plugin</title>
     <script type='text/javascript' src='javascripts/jquery-1.2.6.min.js'></script>
     <script type='text/javascript' src='javascripts/jquery.autogrow-textarea.js'></script>
     <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
@@ -11,13 +11,46 @@
   <body>
     <div id='container'>
       
-      <textarea rows='4' cols='40' style='line-height:1; font-size: 120%'></textarea>
+      <h1>
+        grab bag <span class='subtitle'>- assorted jQuery plugins</span>
+      </h1>
       
-      <script type='text/javascript'>
-        $(function() {
-          $('textarea').autogrow();
-        });
-      </script>
+      <div id='sidebar'>
+        <ul id='project-nav'>
+          <li><a href='index.html'>Plugin List</a></li>
+        </ul>
+        <ul id='ohoa-nav'>
+          <li><a href='http://onehackoranother.com/projects/'>Back to projects &raquo;</a></li>
+          <li><a href='http://onehackoranother.com/'>Back to onehackoranother.com &raquo;</a></li>
+        </ul>
+      </div>
+      
+      <div id='main'>
+        
+        <h2>Auto-Growing Textarea</h2>
+        
+        <p>
+          A textarea which grows vertically as it becomes full. This implementation -
+          inspired by Facebook - relies on a hidden auxiliary <code>div</code>, preventing
+          flickering scrollbars.
+        </p>
+        
+        <div class='caption'>Example:</div>
+        <pre>$('textarea').autogrow();</pre>
+        
+        <textarea rows='6' style='line-height:1; font-size: 120%; width: 100%'></textarea>
+
+        <script type='text/javascript'>
+          $(function() {
+            $('textarea').autogrow();
+          });
+        </script>
+        
+        <h3>Direct Link</h3>
+        
+        <p><a href='http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js'>jquery.autogrow-textarea.js</a></p>
+      
+      </div>
       
     </div>
   </body>

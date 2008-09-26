@@ -3,12 +3,13 @@
 
 <html>
   <head>
-    <title>Input Hint</title>
+    <title>jQuery Grab Bag - Input Hint Plugin</title>
     <script type='text/javascript' src='javascripts/jquery-1.2.6.min.js'></script>
     <script type='text/javascript' src='javascripts/jquery.input-hint.js'></script>
     <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
     <style type='text/css'>
       .hint { color: #808080; }
+      #test-form { border: 1px solid #a0a0a0; padding: 0.5em; background-color: #f0f0f0; }
     </style>
     <script type='text/javascript'>
       $(function() {
@@ -19,13 +20,49 @@
   <body>
     <div id='container'>
       
-      <form method='post'>
+      <h1>
+        grab bag <span class='subtitle'>- assorted jQuery plugins</span>
+      </h1>
+      
+      <div id='sidebar'>
+        <ul id='project-nav'>
+          <li><a href='index.html'>Plugin List</a></li>
+        </ul>
+        <ul id='ohoa-nav'>
+          <li><a href='http://onehackoranother.com/projects/'>Back to projects &raquo;</a></li>
+          <li><a href='http://onehackoranother.com/'>Back to onehackoranother.com &raquo;</a></li>
+        </ul>
+      </div>
+      
+      <div id='main'>
         
-        <input type='text' hint='Forename' name='forename' /><br/>
-        <input type='text' hint='Surname' name='surname' /><br/>
-        <input type='submit' value='Submit' />
+        <h2>Input Hint</h2>
         
-      </form>
+        <p>
+          Display hints to users within a text input and remove them automatically on focus/form
+          submission. This implementation relies on a non-standard attribute,
+          <code>hint</code>; if displaying a VALID XHTML badge is precious to you this
+          is going to mess up your day.
+        </p>
+        
+        <div class='caption'>Example:</div>
+        <pre>HTML:
+&lt;input type='text' name='forename' hint='Forename' /&gt;
+          
+JS:
+$('*[@hint]').inputHint();</pre>
+        
+        <form method='post' id='test-form'>
+          <input type='text' hint='Forename' name='forename' /><br/>
+          <input type='text' hint='Surname' name='surname' />
+          <input type='submit' value='Submit' />
+        </form>
+
+        <h2>Direct Link</h2>
+        
+        <p><a href='http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.input-hint.js'>jquery.input-hint.js</a></p>
+        
+      </div>
       
     </div>
   </body>
