@@ -35,6 +35,7 @@
                 var val = this.value.replace(/</g, '&lt;')
                                     .replace(/>/g, '&gt;')
                                     .replace(/&/g, '&amp;')
+																		.replace(/\n$/, '<br/>&nbsp;')
                                     .replace(/\n/g, '<br/>')
 																		.replace(/ {2,}/g, function(space) {return times('&nbsp;', space.length -1) + ' '});
                 
