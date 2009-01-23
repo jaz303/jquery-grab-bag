@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="stylesheets/main.css" type="text/css" />
     <style type='text/css'>
       .hint { color: #808080; }
-      #test-form { border: 1px solid #a0a0a0; padding: 0.5em; background-color: #f0f0f0; }
+      #test-form-1,
+      #test-form-2 { border: 1px solid #a0a0a0; padding: 0.5em; background-color: #f0f0f0; margin-bottom: 1em; }
     </style>
     <script type='text/javascript'>
       $(function() {
-        $('*[@hint]').inputHint();
+        $('#test-form-1 *[hint]').inputHint();
+        $('#test-form-2 input[type=text]').inputHint({using: '+ kbd'});
       });
     </script>
   </head>
@@ -49,17 +51,32 @@
           is going to mess up your day.
         </p>
         
-        <div class='caption'>Example:</div>
+        <div class='caption'>Example using hint attribute:</div>
         <pre>HTML:
 &lt;input type='text' name='forename' hint='Forename' /&gt;
           
 JS:
 $('*[@hint]').inputHint();</pre>
         
-        <form method='post' id='test-form'>
+        <form method='post' id='test-form-1'>
           <input type='text' hint='Forename' name='forename' /><br/>
           <input type='text' hint='Surname' name='surname' />
           <input type='submit' value='Submit' />
+        </form>
+
+        <div class='caption'>Example using auxiliary element:</div>
+        <pre>HTML:
+&lt;input type='text' name='forename' /&gt;
+&lt;kbd&gt;Enter your forename here&lt;/kbd&gt;
+          
+JS:
+$('input').inputHint({using: '+kbd'});</pre>
+        <form method='post' id='test-form-2'>
+          <input type='text' name='forename' /> <kbd>Enter your forename here</kbd><br/>
+          <input type='text' name='surname' /> <kbd>Enter your surname here</kbd>
+          <input type='submit' value='Submit' />
+          <br/>
+          (obviously you'd hide the <code>&lt;kbd/&gt;</code> elements in real usage)
         </form>
 
         <h2>Direct Link</h2>
