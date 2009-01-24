@@ -45,11 +45,15 @@
         <h2>Input Hint</h2>
         
         <p>
-          Display hints to users within a text input and remove them automatically on focus/form
-          submission. This implementation relies on a non-standard attribute,
-          <code>hint</code>; if displaying a VALID XHTML badge is precious to you this
-          is going to mess up your day.
+          Display input hints to users within a text input and remove them automatically
+          on focus/form submission. The hint text for each input can be supplied by
+          assigning it to the non-standard markup attribute <code>hint</code>, or by supplying
+          a jQuery selector that, when evaluated in the context of some input element
+          (e.g. <code>$(selector, inputElement)</code>), matches an auxiliary element
+          containing the corresponding hint text.
         </p>
+        
+        <p>Examples of both methods are given below:</p>
         
         <div class='caption'>Example using hint attribute:</div>
         <pre>HTML:
