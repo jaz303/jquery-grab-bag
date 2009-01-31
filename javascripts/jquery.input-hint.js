@@ -9,8 +9,8 @@
 	 *
 	 * Usage examples:
 	 *
-	 * Add hints to all inputs with the 'hint' attribute set:
-	 *   $('*[hint]').inputHint();
+	 * Add hints to all inputs with the 'title' attribute set:
+	 *   $('input[title],textarea[title]').inputHint();
      *
      * Add hints to all matched elements, grabbing the hint text from each element's
      * adjacent <kbd/> tag:
@@ -19,18 +19,19 @@
 	 * Options keys:
 	 *  using: jQuery selector locating element containing hint text, relative to
 	 *         the input currently being considered.
+	 *  hintAttr - tag attribute containing hint text. Default: 'title'
 	 *  hintClass - CSS class to apply to inputs with active hints. Default: 'hint'
 	 */
 	$.fn.inputHint = function(options) {
 		
-		options = $.extend({hintClass: 'hint'}, options || {});
+		options = $.extend({hintClass: 'hint', hintAttr: 'title'}, options || {});
 		
 		function hintFor(element) {
 			var h;
 			if (options.using && (h = $(options.using, element)).length > 0) {
 				return h.text();
 			} else {
-				return $(element).attr('hint') || '';
+				return $(element).attr(options.hintAttr) || '';
 			}
 		}
 
