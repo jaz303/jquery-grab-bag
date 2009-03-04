@@ -1,6 +1,6 @@
 /**
  * Simple DOM Builder
- * (c) 2008 Jason Frame (jason@onehackoranother.com)
+ * (c) 2008, 2009 Jason Frame (jason@onehackoranother.com)
  *
  * Usage:
  *
@@ -45,3 +45,27 @@ function $$(tagName) {
     return $ele;
 
 };
+
+$$.make = function(tagName) {
+	return function() {
+		var args = jQuery.makeArray(arguments);
+		args.unshift(tagName);
+		return $$.apply(this, args);
+	};
+};
+
+(function(scope) {
+	// thank you, http://www.htmldog.com/reference/htmltags/
+	var tags = ["a", "abbr", "acronym", "address", "area", "b", "base", "bdo",
+	            "big", "blockquote", "body", "br", "button", "caption", "cite",
+	            "code", "col", "colgroup", "dd", "del", "dfn", "div", "dl",
+	            "dt", "em", "fieldset", "form", "h1", "h2", "h3", "h4", "h5",
+	            "h6", "head", "html", "hr", "i", "img", "input", "ins", "kbd",
+	            "label", "legend", "li", "link", "map", "meta", "noscript",
+	            "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
+	            "samp", "script", "select", "small", "span", "strong", "style",
+	            "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
+	            "thead", "title", "tr", "tt", "ul", "var"];
+	for (var i = 0; i < tags.length; i++)
+		scope[tags[i].toUpperCase()] = $$.make(tags[i]);
+})(this);

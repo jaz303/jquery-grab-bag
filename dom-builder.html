@@ -30,6 +30,13 @@
             ]
           }
         ).appendTo('#test-container');
+        
+        TABLE(
+          TR( TH('This is'), TH('another table') ),
+          TR( TD('generated using'), TD('shortcut methods') ),
+          {style: "margin:20px auto"}
+        ).appendTo('#test-container-2');
+        
       });
     </script>
   </head>
@@ -77,6 +84,18 @@
         <p>And here's the resulting table (it's auto-generated, trust me):</p>
       
         <div id='test-container'></div>
+        
+        <p>It's also possible to use shortcut methods for each tag although by using
+          these you forgo the ability to neatly specify IDs/classes:
+          
+        <div class='caption'>Example:</div>
+        <pre>TABLE(
+  TR( TH('This is'), TH('another table') ),
+  TR( TD('generated using'), TD('shortcut methods') ),
+  {style: "margin:20px auto"}
+).appendTo('#test-container-2');</pre>
+        
+        <div id='test-container-2'></div>
         
         <p>The general form of each call to <code>$$()</code> is:</p>
         
