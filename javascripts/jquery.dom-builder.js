@@ -11,17 +11,21 @@
  * );
  *
  * Returns a jQuery object.
- *
- * @todo handle array parameters
  */
-function $$(tagName) {
-    
-    var max = arguments.length - 1, options = {}, $ele = null, match = null;
-    if (typeof arguments[max] == 'object' && !(arguments[max].html)) {
-        options = arguments[max--];
+function $$() {
+	
+	var args 	= jQuery.makeArray(arguments),
+		tag		= args.shift();
+		last 	= args[args.length - 1],
+		options	= {},
+		$ele	= null,
+		match	= null;
+		
+	if (typeof last == 'object' && !(last.html) && !(last.nodeType)) {
+        options = args.pop();
     }
     
-    if (match = /^([\w-]+)(#([\w-]+))?((\.[\w-]+)*)$/.exec(tagName)) {
+    if (match = /^([\w-]+)(#([\w-]+))?((\.[\w-]+)*)$/.exec(tag)) {
         
         var $ele = jQuery(document.createElement(match[1]));
         
@@ -38,13 +42,22 @@ function $$(tagName) {
             }
         }
 
-        for (var i = 1; i <= max; i++) $ele.append(arguments[i]);
-    
+		$$.appendAll($ele, args);
+		
     }
     
     return $ele;
 
 };
+
+$$.appendAll = function($target, items) {
+	for (var i = 0; i < items.length; i++) {
+		var thing = items[i];
+		if (thing === null) continue;
+		else if (thing instanceof Array) $$.appendAll($target, thing);
+		else $target.append(thing);
+	}
+}
 
 $$.make = function(tagName) {
 	return function() {
