@@ -25,11 +25,8 @@
             var update = function() {
     
                 var times = function(string, number) {
-                    var _res = '';
-                    for(var i = 0; i < number; i ++) {
-                        _res = _res + string;
-                    }
-                    return _res;
+                    for (var i = 0, r = ''; i < number; i ++) r += string;
+                    return r;
                 };
                 
                 var val = this.value.replace(/</g, '&lt;')
