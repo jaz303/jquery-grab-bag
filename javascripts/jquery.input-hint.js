@@ -48,10 +48,9 @@
 		this.filter(function() { return !!hintFor(this); })
 			.focus(removeHint).blur(showHint).blur();
 
-        var $form = this.parents('form:eq(0)');
         this.each(function() {
             var self = this;
-            $form.submit(function() { removeHint.apply(self); });
+            $(this).parents('form').submit(function() { removeHint.apply(self); });
         });
 
 		return this.end(); // undo filter
