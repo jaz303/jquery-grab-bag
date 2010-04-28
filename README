@@ -16,3 +16,4 @@ Currently includes:
 * DOM-builder
 * Text effects
 * unselectable - disables text selection
+* linify - wraps each line of an element's text in its own tag
