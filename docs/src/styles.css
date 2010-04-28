@@ -18,3 +18,5 @@ th { font-weight: bold; }
 #typewriter,
 #scrambled-writer,
 #rot13 { font-family: monospace; border: 1px solid black; padding: 0.5em; min-height: 130px; }
+
+.linified .line { margin-bottom: 5px; background: #ff0080; }
