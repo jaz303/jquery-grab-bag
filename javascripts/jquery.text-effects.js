@@ -36,7 +36,7 @@
                 random = randomAlphaNum, inc = 3;
             $ele.text('');
             var timer = setInterval(function() {
-                $ele.text(str.substring(0, progress) + str.substring(progress, str.length - 1).replace(replace, random));
+                $ele.text(str.substring(0, progress) + str.substring(progress, str.length).replace(replace, random));
                 progress += inc
                 if (progress >= str.length + inc) clearInterval(timer);
             }, 100);
