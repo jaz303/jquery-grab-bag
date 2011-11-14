@@ -9,8 +9,8 @@
    *
    * Usage examples:
    *
-   * Add hints to all inputs with the 'title' attribute set:
-   *   $('input[title],textarea[title]').inputHint();
+   * Add hints (placeholders) to all inputs with the 'placeholder' attribute set:
+   *   $('input[placeholder],textarea[placeholder]').inputHint();
    *
    * Add hints to all matched elements, grabbing the hint text from each element's
    * adjacent <kbd/> tag:
@@ -19,15 +19,13 @@
    * Options keys:
    *  using: jQuery selector locating element containing hint text, relative to
    *         the input currently being considered.
-   *  hintAttr - tag attribute containing hint text. Default: 'title'
+   *  hintAttr - tag attribute containing hint text. Default: 'placeholder'
    *  hintClass - CSS class to apply to inputs with active hints. Default: 'hint'
    */
   $.fn.inputHint = function(options) {
     
     var i = document.createElement('input');
-    if (!('placeholder' in i)) {
-      return this;
-    }
+    if ('placeholder' in i) return this;
     
     options = $.extend({hintClass: 'hint', hintAttr: 'placeholder'}, options || {});
     
@@ -51,14 +49,16 @@
     }
     
     this.filter(function() { return !!hintFor(this); })
-      .focus(removeHint).blur(showHint).blur();
+        .focus(removeHint)
+        .blur(showHint)
+        .blur();
 
-        this.each(function() {
-            var self = this;
-            $(this).parents('form').submit(function() { removeHint.apply(self); });
-        });
+    this.each(function() {
+      var self = this;
+      $(this).parents('form').submit(function() { removeHint.apply(self); });
+    });
 
-    return this.end(); // undo filter
+    return this;
 
   };
   
