@@ -44,13 +44,24 @@
         return this;
     };
     
-    $.fn.typewriter = function() {
+    $.fn.typewriter = function(callback) {
         this.each(function() {
             var $ele = $(this), str = $ele.text(), progress = 0;
             $ele.text('');
             var timer = setInterval(function() {
                 $ele.text(str.substring(0, progress++) + (progress & 1 ? '_' : ''));
-                if (progress >= str.length) clearInterval(timer);
+                if (progress >= str.length) { clearInterval(timer); callback($ele); }
+            }, 100);
+        });
+        return this;
+    };
+    
+    $.fn.typewriter_delete = function(callback) {
+        this.each(function() {
+            var $ele = $(this), str = $ele.text(), progress = $ele.text().length;
+            var timer = setInterval(function() {
+                $ele.text(str.substring(0, progress--) + (progress & 1 && progress >= 0 ? '_' : ''));
+                if (progress < 0) { clearInterval(timer); callback($ele); }
             }, 100);
         });
         return this;
