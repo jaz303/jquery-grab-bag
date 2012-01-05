@@ -57,14 +57,19 @@
     };
     
     $.fn.unscramble = function() {
+        var defaults = { 
+    		speed: 100,
+    		chars: 25
+    	};
+    	var options = $.extend({ }, defaults, options);
         this.each(function() {
             var $ele = $(this), str = $ele.text(), replace = /[^\s]/,
-                state = [], choose = [], reveal = 25, random = randomAlphaNum;
+                state = [], choose = [], reveal = options.chars, random = randomAlphaNum;
             
             for (var i = 0; i < str.length; i++) {
                 if (str[i].match(replace)) {
                     state.push(random());
-                    choose.push(i);
+                    choose.push(i);     
                 } else {
                     state.push(str[i]);
                 }
@@ -82,7 +87,7 @@
                 for (i = 0; i < choose.length; i++) state[choose[i]] = random();
                 $ele.text(state.join(''));
                 if (choose.length == 0) clearInterval(timer);
-            }, 100);
+            }, options.speed);
         });
         return this;
     };
