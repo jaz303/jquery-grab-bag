@@ -36,6 +36,7 @@
                                     .replace(/\n/g, '<br/>')
                                     .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
                 
+    			shadow.css('width', $(this).css('width'));
                 shadow.html(val);
                 $(this).css('height', Math.max(shadow.height() + 20, minHeight));
             
