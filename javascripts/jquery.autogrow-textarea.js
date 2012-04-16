@@ -1,54 +1,55 @@
-(function($) {
-
-    /*
+(function($)
+{
+    /**
      * Auto-growing textareas; technique ripped from Facebook
+     *
+     * http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js
      */
-    $.fn.autogrow = function(options) {
-        
-        this.filter('textarea').each(function() {
-            
-            var $this       = $(this),
-                minHeight   = $this.height(),
-                lineHeight  = $this.css('lineHeight');
-            
+    $.fn.autogrow = function(options)
+    {
+        return this.filter('textarea').each(function()
+        {
+            var self                                = this;
+            var $self                               = $(self);
+            var minHeight                           = $self.height();
+            var noFlickerPad                        = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight'));
+
             var shadow = $('<div></div>').css({
                 position:   'absolute',
                 top:        -10000,
                 left:       -10000,
-                width:      $(this).width() - parseInt($this.css('paddingLeft')) - parseInt($this.css('paddingRight')),
-                fontSize:   $this.css('fontSize'),
-                fontFamily: $this.css('fontFamily'),
-                lineHeight: $this.css('lineHeight'),
+                width:      $self.width(),
+                fontSize:   $self.css('fontSize'),
+                fontFamily: $self.css('fontFamily'),
+                fontWeight: $self.css('fontWeight'),
+                lineHeight: $self.css('lineHeight'),
                 resize:     'none'
             }).appendTo(document.body);
-            
-            var update = function() {
-    
-                var times = function(string, number) {
-                    for (var i = 0, r = ''; i < number; i ++) r += string;
+
+            var update = function()
+            {
+                var times = function(string, number)
+                {
+                    for (var i=0, r=''; i<number; i++) r += string;
                     return r;
                 };
-                
-                var val = this.value.replace(/</g, '&lt;')
+
+                var val = self.value.replace(/</g, '&lt;')
                                     .replace(/>/g, '&gt;')
                                     .replace(/&/g, '&amp;')
                                     .replace(/\n$/, '<br/>&nbsp;')
                                     .replace(/\n/g, '<br/>')
-                                    .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
-                
+                                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
+
+                shadow.css('width', $self.width());
                 shadow.html(val);
-                $(this).css('height', Math.max(shadow.height() + 20, minHeight));
-            
+                $self.css('height', Math.max(shadow.height() + noFlickerPad, minHeight));
             }
-            
-            $(this).change(update).keyup(update).keydown(update);
-            
-            update.apply(this);
-            
+
+            $self.change(update).keyup(update).keydown(update);
+            $(window).resize(update);
+
+            update();
         });
-        
-        return this;
-        
-    }
-    
+    };
 })(jQuery);
