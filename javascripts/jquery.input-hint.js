@@ -24,10 +24,14 @@
    */
   $.fn.inputHint = function(options) {
     
-    var i = document.createElement('input');
-    if ('placeholder' in i) return this;
-    
     options = $.extend({hintClass: 'hint', hintAttr: 'placeholder'}, options || {});
+    
+    if (options.hintAttr == 'placeholder') {
+      var i = document.createElement('input');
+      if ('placeholder' in i) return this;
+    }
+    
+    
     
     function hintFor(element) {
       var h;
