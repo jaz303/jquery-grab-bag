@@ -7,7 +7,7 @@
      *
      * Requires jQuery 1.4+
      */
-    $.fn.autogrow = function(options)
+    $.fn.autogrow = function()
     {
         return this.filter('textarea').each(function()
         {
@@ -16,7 +16,7 @@
             var minHeight    = $self.height();
             var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight'),10) || 0;
 
-            var shadow = $('<div></div>').css({
+            var shadow = $('<div />').css({
                 position:    'absolute',
                 top:         -10000,
                 left:        -10000,
