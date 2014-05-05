@@ -2,7 +2,8 @@
 {
     /**
      * Auto-growing textareas; technique ripped from Facebook
-     *
+     * 
+     * 
      * http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js
      */
     $.fn.autogrow = function(options)
@@ -13,6 +14,10 @@
             var $self        = $(self);
             var minHeight    = $self.height();
             var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
+            var settings = $.extend({
+                preGrowCallback: null,
+                postGrowCallback: null
+              }, options );
 
             var shadow = $('<div></div>').css({
                 position:    'absolute',
@@ -49,7 +54,17 @@
 
                 shadow.css('width', $self.width());
                 shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
-                $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
+                
+                var newHeight=Math.max(shadow.height() + noFlickerPad, minHeight);
+                if(settings.preGrowCallback!=null){
+                  newHeight=settings.preGrowCallback($self,shadow,newHeight,minHeight);
+                }
+                
+                $self.height(newHeight);
+                
+                if(settings.postGrowCallback!=null){
+                  settings.postGrowCallback($self);
+                }
             }
 
             $self.change(update).keyup(update).keydown({event:'keydown'},update);
