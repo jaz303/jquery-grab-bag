@@ -41,7 +41,7 @@
                 };
 
                 var val = self.value.replace(/&/g, '&amp;')
-									.replace(/</g, '&lt;')
+                                    .replace(/</g, '&lt;')
                                     .replace(/>/g, '&gt;')                                    
                                     .replace(/\n$/, '<br/>&nbsp;')
                                     .replace(/\n/g, '<br/>')
