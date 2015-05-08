@@ -42,7 +42,7 @@
 
                 var val = self.value.replace(/&/g, '&amp;')
                                     .replace(/</g, '&lt;')
-                                    .replace(/>/g, '&gt;')                                    
+                                    .replace(/>/g, '&gt;')
                                     .replace(/\n$/, '<br/>&nbsp;')
                                     .replace(/\n/g, '<br/>')
                                     .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
