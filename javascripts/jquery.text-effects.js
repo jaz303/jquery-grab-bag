@@ -49,7 +49,7 @@
             var $ele = $(this), str = $ele.text(), progress = 0;
             $ele.text('');
             var timer = setInterval(function() {
-                $ele.text(str.substring(0, progress++) + (progress & 1 ? '_' : ''));
+                $ele.text(str.substring(0, ++progress) + (progress & 1 ? '_' : ''));
                 if (progress >= str.length) clearInterval(timer);
             }, 100);
         });
