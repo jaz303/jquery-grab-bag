@@ -43,9 +43,9 @@
                 var val = self.value.replace(/&/g, '&amp;')
                                     .replace(/</g, '&lt;')
                                     .replace(/>/g, '&gt;')
-                                    .replace(/\n$/, '<br/>&nbsp;')
+                                    .replace(/\n$/, '<br/>&#xa0;')
                                     .replace(/\n/g, '<br/>')
-                                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
+                                    .replace(/ {2,}/g, function(space){ return times('&#xa0;', space.length - 1) + ' ' });
 
 				// Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
 				if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
